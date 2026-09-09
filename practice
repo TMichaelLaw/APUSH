@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Period Three — APUSH topics 3.6 to 3.9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e9edef; --surface:#ffffff; --raise:#f4f7f8;
+  --text:#0f2e4a; --text-2:#5b7286; --line:#cbd5db;
+  --hdr-bg:#0f2e4a; --hdr-fg:#e8eef1;
+  --brass:#a2761f; --brass-soft:#f0e6d2;
+  --ok:#2a7561; --ok-bg:#e2edea;
+  --no:#8c2f2a; --no-bg:#f4e7e5;
+  --shift:.16s cubic-bezier(.2,.7,.3,1);
+}
+@media (prefers-color-scheme:dark){
+:root{
+  --bg:#0b1b26; --surface:#132735; --raise:#18303f;
+  --text:#e6edf1; --text-2:#93a8b8; --line:#26404f;
+  --hdr-bg:#081720; --hdr-fg:#e6edf1;
+  --brass:#d6a64b; --brass-soft:#2a2318;
+  --ok:#5fbfa3; --ok-bg:#14332c;
+  --no:#e08079; --no-bg:#331a1a;
+}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.62;
+}
+.band{background:var(--hdr-bg);color:var(--hdr-fg)}
+.inner{max-width:680px;margin:0 auto;padding:0 22px}
+.band .inner{padding-top:30px;padding-bottom:30px}
+.eyebrow{font-size:13.5px;color:var(--hdr-fg);opacity:.72;margin:0 0 7px;letter-spacing:.01em}
+h1{
+  font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;
+  font-size:36px;font-weight:500;line-height:1.08;letter-spacing:-.018em;margin:0;
+}
+.band p.lede{margin:11px 0 0;font-size:15px;opacity:.78;max-width:44ch}
+main{padding:30px 0 80px}
+
+.list{border-top:1px solid var(--line)}
+.entry{
+  display:flex;gap:20px;align-items:flex-start;width:100%;text-align:left;
+  background:none;border:none;border-bottom:1px solid var(--line);
+  padding:20px 12px 20px 4px;font:inherit;color:var(--text);cursor:pointer;
+  transition:background var(--shift),padding var(--shift);
+}
+.entry:hover{background:var(--raise);padding-left:12px;padding-right:4px}
+.entry:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+.num{
+  font-family:Fraunces,Georgia,serif;font-size:34px;font-weight:400;line-height:1;
+  color:var(--brass);flex:none;width:44px;padding-top:2px;font-variant-numeric:lining-nums;
+}
+.entry .t{font-size:18.5px;font-weight:500;line-height:1.3;margin:0 0 4px}
+.entry .d{font-size:14.5px;color:var(--text-2);margin:0}
+.entry .s{font-size:13.5px;color:var(--ok);margin:8px 0 0;font-weight:500}
+
+.rail{display:flex;gap:4px;margin:0 0 22px}
+.seg{flex:1;height:6px;background:var(--line);border-radius:99px;transition:background var(--shift)}
+.seg.now{background:var(--brass)}
+.seg.hit{background:var(--ok)}
+.seg.miss{background:var(--no)}
+.meta{font-size:13.5px;color:var(--text-2);margin:0 0 24px}
+
+.doc{background:var(--surface);border-left:3px solid var(--brass);padding:19px 22px;margin:0 0 26px}
+.doc .src{font-size:13px;color:var(--text-2);margin:0 0 9px}
+.doc .qt{font-family:Fraunces,Georgia,serif;font-size:17.5px;font-weight:400;line-height:1.62;margin:0;letter-spacing:.005em}
+
+.ask{display:flex;gap:20px;align-items:flex-start;margin:0 0 22px}
+.ask .num{font-size:30px;width:44px}
+.ask p{font-size:18px;line-height:1.45;margin:2px 0 0;letter-spacing:-.005em}
+
+.opts{display:flex;flex-direction:column;gap:8px;margin-left:64px}
+.opt{
+  display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;
+  background:var(--surface);border:1px solid var(--line);border-left:3px solid transparent;
+  border-radius:3px;padding:13px 16px;font:inherit;font-size:15.5px;line-height:1.5;
+  color:var(--text);cursor:pointer;min-height:48px;
+  transition:border-color var(--shift),background var(--shift),transform var(--shift);
+}
+.opt:hover:not(:disabled){border-left-color:var(--brass);transform:translateX(3px)}
+.opt:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.opt:disabled{cursor:default}
+.badge{
+  flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12.5px;font-weight:600;color:var(--text-2);margin-top:1px;
+  transition:all var(--shift);
+}
+.opt.right{background:var(--ok-bg);border-color:var(--ok);border-left-color:var(--ok)}
+.opt.right .badge{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.opt.wrong{background:var(--no-bg);border-color:var(--no);border-left-color:var(--no)}
+.opt.wrong .badge{background:var(--no);border-color:var(--no);color:var(--surface)}
+
+.said{margin:22px 0 0 64px;padding:17px 20px;background:var(--surface);border-left:3px solid var(--brass);font-size:15px;line-height:1.65}
+.said.y{border-left-color:var(--ok)}
+.said.n{border-left-color:var(--no)}
+.said b{font-weight:600;display:block;margin-bottom:5px;font-size:14px}
+.said.y b{color:var(--ok)}
+.said.n b{color:var(--no)}
+
+.part{display:block;font-size:16.5px;line-height:1.5;margin:0 0 9px}
+textarea{
+  width:100%;font:inherit;font-size:16px;line-height:1.55;padding:12px 14px;
+  background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--line);
+  border-radius:3px;color:var(--text);resize:vertical;transition:border-color var(--shift);
+}
+textarea:focus{outline:none;border-color:var(--brass);border-left-color:var(--brass)}
+.saqbox{margin-bottom:20px}
+.err{color:var(--no);font-size:14px;margin:12px 0 0;font-weight:500}
+.model{white-space:pre-wrap;font-size:15px;line-height:1.72;margin:22px 0 0;padding:19px 22px;background:var(--surface);border-left:3px solid var(--brass)}
+
+.big{font-family:Fraunces,Georgia,serif;font-size:72px;font-weight:500;line-height:.95;letter-spacing:-.03em;margin:6px 0 0}
+.big .of{font-size:26px;color:var(--text-2);font-weight:400;letter-spacing:0}
+.verdict{font-size:15.5px;color:var(--text-2);margin:14px 0 30px;max-width:46ch}
+.miss{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.45}
+.miss .mn{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--brass);flex:none;width:26px}
+.keyq{padding:20px 0;border-bottom:1px solid var(--line)}
+.keyq .kq{font-size:16.5px;font-weight:500;line-height:1.45;margin:0 0 10px;display:flex;gap:16px}
+.keyq .kq .mn{font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:400;color:var(--brass);flex:none;width:26px}
+.keyq .ka{font-size:15px;color:var(--ok);margin:0 0 8px 42px;font-weight:500}
+.keyq .ke{font-size:15px;color:var(--text-2);margin:0 0 0 42px;line-height:1.65}
+
+.acts{margin-top:34px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  font:inherit;font-size:15.5px;font-weight:500;padding:13px 24px;min-height:48px;
+  border-radius:3px;cursor:pointer;flex:1;min-width:150px;
+  transition:background var(--shift),color var(--shift);
+}
+.solid{background:var(--text);color:var(--bg);border:1px solid var(--text)}
+.solid:hover{background:var(--brass);border-color:var(--brass);color:#fff}
+.hollow{background:none;color:var(--text);border:1px solid var(--line)}
+.hollow:hover{border-color:var(--brass);color:var(--brass)}
+.btn:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.tip{font-size:13px;color:var(--text-2);margin:30px 0 0;padding-top:16px;border-top:1px solid var(--line)}
+@media (max-width:560px){
+  h1{font-size:29px}.band .inner{padding-top:24px;padding-bottom:24px}.inner{padding:0 17px}
+  .opts,.said{margin-left:0}.ask{gap:14px}.ask .num{font-size:25px;width:32px}
+  .num{width:36px;font-size:29px}.entry{gap:14px}.big{font-size:58px}.doc{padding:17px 18px}
+  .keyq .ka,.keyq .ke{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div class="band"><div class="inner">
+  <p class="eyebrow" id="eyebrow">United States history · advanced placement</p>
+  <h1 id="title">Period Three</h1>
+  <p class="lede" id="lede">Topics 3.6 to 3.9 — revolutionary ideals, the Articles of Confederation, the convention and ratification, and the Constitution.</p>
+</div></div>
+<main><div class="inner">
+  <div id="rail"></div>
+  <p class="meta" id="meta"></p>
+  <div id="doc"></div>
+  <div id="ask"></div>
+  <div class="opts" id="opts"></div>
+  <div id="fb"></div>
+  <div class="acts" id="acts"></div>
+  <p class="tip" id="tip"></p>
+</div></main>
+<script>
+const SETS=[
+{n:"Full practice test",d:"Fifteen stimulus questions across five documents, then two short-answer questions",
+Q:[
+{s:"Abigail Adams, letter to John Adams, March 31, 1776",t:"…in the new Code of Laws which I suppose it will be necessary for you to make I desire you would Remember the Ladies, and be more generous and favourable to them than your ancestors. Do not put such unlimited power into the hands of the Husbands. Remember all Men would be tyrants if they could.",
+q:"Adams's request is best understood as evidence of which broader development?",
+o:["A coordinated women's suffrage movement organized during the war","Revolutionary rhetoric about liberty prompting groups excluded from power to press their own claims","Widespread colonial acceptance of legal equality between men and women","The replacement of English common law with a uniform national legal code"],a:1,
+e:"The war's language of natural rights, consent and tyranny was picked up by women, enslaved people and others to argue their own case. No organized suffrage movement existed until Seneca Falls in 1848, and common-law coverture survived intact."},
+{q:"Which outcome most directly limited the kind of change Adams was asking for?",
+o:["State constitutions written in the 1770s and 1780s generally left coverture intact","Congress explicitly banned women from owning property","The Constitution of 1787 defined voters as male in every state","The Northwest Ordinance restricted married women's westward migration"],a:0,
+e:"Coverture — a wife's legal identity absorbed into her husband's — came through the Revolution nearly untouched. The Constitution left suffrage to the states, and New Jersey allowed some propertied women to vote until 1807."},
+{q:"Which ideal best describes how women's civic role was most commonly defined in the 1780s and 1790s?",
+o:["Separate spheres industrial domesticity","Republican motherhood","The cult of true womanhood","Companionate suffrage"],a:1,
+e:"Republican motherhood held that women served the republic by raising virtuous, informed sons. It justified expanded female education — Judith Sargent Murray, Benjamin Rush — without granting political rights. The cult of domesticity is a later, antebellum development."},
+{s:"Northwest Ordinance, 1787",t:"…whenever any of the said States shall have sixty thousand free inhabitants therein, such State shall be admitted, by its delegates, into the Congress of the United States, on an equal footing with the original States… There shall be neither slavery nor involuntary servitude in the said territory.",
+q:"The Ordinance is most significant because it",
+o:["Established a permanent colonial relationship between the East and the West","Created an orderly procedure by which territories could become states equal to the original thirteen","Extinguished all Native American land claims north of the Ohio River","Abolished slavery throughout the United States"],a:1,
+e:"This is the Confederation government's great achievement: it rejected a colonial model in favor of equal statehood, and its slavery ban made the Ohio River a sectional dividing line. The ban applied only to the Northwest Territory."},
+{q:"The Ordinance illustrates which contrast in the Confederation government's powers?",
+o:["It could regulate interstate commerce but not foreign trade","It could organize western lands but could not levy taxes to fund the government","It could raise a standing army but could not negotiate treaties","It could amend the Articles by majority vote but could not admit new states"],a:1,
+e:"Congress controlled the western domain yet could only requisition funds from the states, never tax. Amendment required unanimity, and commercial regulation was also beyond its reach."},
+{q:"The Land Ordinance of 1785 was designed primarily to",
+o:["Generate revenue by surveying and selling western land in townships","Guarantee Native American nations title to land west of the Appalachians","Redistribute Loyalist estates to Continental Army veterans","Repay French war loans with land grants"],a:0,
+e:"Rectangular survey into 36-square-mile townships, one section reserved to fund public schools. Land sales were the workaround for having no taxing power."},
+{s:"George Washington to Henry Lee, October 31, 1786",t:"You talk, my good Sir, of employing influence to appease the present tumults in Massachusetts. I know not where that influence is to be found; and if attainable, that it would be a proper remedy for the disorders. Influence is no Government. Let us have one by which our lives, liberties and properties will be secured, or let us know the worst at once.",
+q:"The tumults Washington refers to were driven most directly by",
+o:["Backcountry farmers facing debt suits, foreclosures and hard-money taxes","Merchants protesting British seizure of American ships","Enslaved people organizing revolts in the Connecticut River valley","Frontier settlers resisting the Northwest Ordinance's slavery ban"],a:0,
+e:"Shays's Rebellion, 1786 to 1787: indebted western Massachusetts farmers, many of them veterans, shut down courts to stop foreclosures after the state demanded taxes in specie."},
+{q:"Washington's reaction is most useful as evidence of",
+o:["Growing elite conviction that the Articles could not secure order or property","Broad public demand for a hereditary executive","Southern planters' fear of a federal ban on the slave trade","Popular support for annual constitutional conventions"],a:0,
+e:"The rebellion was put down by a privately financed militia rather than a national force. Elite alarm at exactly that fact fed the push for the Philadelphia Convention."},
+{q:"Which sequence correctly orders these events?",
+o:["Annapolis Convention, Shays's Rebellion, Philadelphia Convention, ratification","Shays's Rebellion, Annapolis Convention, Philadelphia Convention, ratification","Philadelphia Convention, Shays's Rebellion, Annapolis Convention, ratification","Shays's Rebellion, Philadelphia Convention, Annapolis Convention, ratification"],a:1,
+e:"A deliberately tricky one. Annapolis met in September 1786 and the rebellion began that August, so they overlap — but the causal chain the exam tests runs unrest, then Annapolis's call for a broader convention, then Philadelphia in May 1787, then ratification in 1787 and 1788."},
+{s:"Brutus, Anti-Federalist essay No. 1, October 1787",t:"In a republic, the manners, sentiments, and interests of the people should be similar. If not, there will be a constant clashing of opinions; and the representatives of one part will be continually striving against those of the other… In a large extended country, it is impossible to have a representation, possessing the sentiments, and of integrity, to declare the minds of the people.",
+q:"The author's central objection to the proposed Constitution is that",
+o:["It failed to provide for a national army","A republic covering so vast a territory could not remain genuinely representative","It gave too much power to the individual states","It permitted the direct election of senators"],a:1,
+e:"Anti-Federalists drew on Montesquieu: republics survive only when small and homogeneous. They also feared a distant government would fall to an aristocratic few. Senators were chosen by state legislatures until 1913."},
+{q:"Madison's most influential rebuttal to this argument held that",
+o:["A large republic makes it harder for any single faction to form a tyrannical majority","Factions should be suppressed by law before they can organize","A strong executive is the only reliable check on popular passions","States should retain the power to nullify federal law"],a:0,
+e:"Federalist No. 10 inverts the classical view: extend the sphere and you multiply interests, so no one faction can dominate. Madison argued you cure the effects of faction, not its causes."},
+{q:"Which concession did Federalists make that proved decisive in securing ratification?",
+o:["Agreeing that amendments could pass by simple majority","Promising to add a bill of rights in the first Congress","Accepting direct popular election of the president","Guaranteeing each state an equal vote in the House"],a:1,
+e:"Massachusetts ratified only on that understanding and other states followed. Madison drafted the amendments; ten were ratified in 1791. Hamilton had argued in Federalist No. 84 that a bill of rights was unnecessary and even dangerous."},
+{s:"James Madison, Federalist No. 51, 1788",t:"…the great security against a gradual concentration of the several powers in the same department, consists in giving to those who administer each department the necessary constitutional means and personal motives to resist encroachments of the others. Ambition must be made to counteract ambition.",
+q:"Madison is describing which constitutional principle?",
+o:["Popular sovereignty","Checks and balances among separated branches","Judicial review","Concurrent majority"],a:1,
+e:"Separation of powers alone isn't enough for Madison — each branch needs both the tools and the self-interest to push back. Judicial review is not in the text; the Court asserted it in Marbury v. Madison, 1803."},
+{q:"Which provision best exemplifies the mechanism Madison describes?",
+o:["The presidential veto, which Congress may override by a two-thirds vote","The requirement that revenue bills originate in the House","The Three-Fifths Compromise","The guarantee of a republican form of government to every state"],a:0,
+e:"Veto and override is the textbook case of one branch checking another. The origination clause governs House and Senate relations inside a single branch, so it isn't interbranch checking."},
+{q:"Federalist No. 51 also defends federalism, which the Constitution establishes by",
+o:["Granting the national government only powers expressly enumerated in the Articles","Dividing sovereignty between national and state governments, with the supremacy clause resolving conflicts","Making state legislatures the sole source of all federal authority","Requiring unanimous state consent for federal legislation"],a:1,
+e:"Madison called it a compound republic — a double security, since power is divided between two levels and then subdivided within each. Article VI's supremacy clause settles conflicts in favor of federal law."}],
+SAQ:[
+{h:"The Articles of Confederation",
+q:["a) Briefly describe ONE specific accomplishment of the government under the Articles of Confederation.","b) Briefly describe ONE specific weakness of the Articles that contributed to calls for a new constitution.","c) Briefly explain ONE specific way the Constitution of 1787 addressed the weakness you identified in part b."],
+m:"a) Acceptable: the Land Ordinance of 1785, with its systematic survey and sale of western land and a section reserved for schools; the Northwest Ordinance of 1787, with its orderly path to equal statehood and slavery ban north of the Ohio; winning the war and negotiating the Treaty of Paris in 1783.\n\nb) Acceptable: no power to tax, only to requisition from states; no power to regulate interstate or foreign commerce; no national executive or judiciary; amendment required unanimous consent; no power to raise a national army, as Shays's Rebellion exposed; states issued rival currencies and taxed one another's goods.\n\nc) Must connect directly to part b. Examples: Article I, Section 8 gives Congress power to lay and collect taxes; the commerce clause grants authority over interstate and foreign trade; Article II creates a single executive commanding the armed forces; Article V allows amendment by three-fourths of the states rather than unanimity.\n\nScoring: each part is worth 1 point on the real exam. Part c earns credit only if the remedy logically matches the weakness named in b."},
+{h:"The reach and limits of revolutionary ideals",
+q:["a) Briefly describe ONE specific way revolutionary ideals changed the status of women or of enslaved and free Black Americans between 1775 and 1800.","b) Briefly describe ONE specific way those same ideals failed to produce change for that group.","c) Briefly explain ONE way the American Revolution influenced political movements outside the United States before 1830."],
+m:"a) Acceptable: every northern state adopted gradual emancipation or abolished slavery between 1777 and 1804, including Vermont in 1777, Pennsylvania in 1780 and the Massachusetts Quock Walker decision in 1783; a rise in private manumissions in the Upper South; the 1787 ban on slavery in the Northwest Territory; free Black institutions such as Richard Allen's African Methodist Episcopal Church; republican motherhood justifying expanded female education, as in Judith Sargent Murray's writing.\n\nb) Acceptable: slavery expanded in the South and gained constitutional protection through the three-fifths clause, the fugitive slave clause and the twenty-year bar on ending the international slave trade; coverture left married women without independent legal or property rights; women were denied the vote almost everywhere, and New Jersey revoked propertied women's suffrage in 1807.\n\nc) Acceptable: the Declaration's natural-rights language echoed in the 1789 Declaration of the Rights of Man; the Haitian Revolution from 1791; Latin American independence movements under Bolívar and others in the 1810s and 1820s; the US Constitution as a model for written constitutions abroad.\n\nScoring: part b should identify real historical continuity, not merely assert that nothing changed."}]},
+
+{n:"The influence of revolutionary ideals",d:"Topic 3.6 · religion, slavery, women, Native nations, global echoes",
+Q:[
+{q:"The Virginia Statute for Religious Freedom, drafted by Jefferson and enacted in 1786, is most significant because it",
+o:["Established Presbyterianism as Virginia's official church","Ended state support for an established church and became a model for the First Amendment","Required officeholders to swear a Protestant oath","Barred clergy from holding public office anywhere in the United States"],a:1,
+e:"Madison shepherded it through the legislature after years of petition campaigns by Baptists and Presbyterians. Disestablishment spread unevenly — Massachusetts kept a tax-supported Congregational establishment until 1833."},
+{q:"Pennsylvania's 1780 abolition law is best described as",
+o:["Immediate emancipation of all enslaved people in the state","Gradual emancipation freeing children born to enslaved mothers only after a long term of service","A ban on importing enslaved people that left existing slavery untouched","A colonization plan resettling freed people outside the state"],a:1,
+e:"Gradual emancipation was the northern pattern. Children born after the law served until age 28, so Pennsylvania still recorded enslaved people in the 1840 census. New York in 1799 and New Jersey in 1804 followed similar schedules."},
+{q:"Which state's revolutionary-era constitution allowed some women to vote?",
+o:["Massachusetts","New Jersey","Pennsylvania","Virginia"],a:1,
+e:"New Jersey's 1776 constitution enfranchised all inhabitants worth £50, which in practice included unmarried and widowed propertied women and some free Black men. The legislature restricted the franchise to white men in 1807."},
+{q:"In 'On the Equality of the Sexes' (1790), Judith Sargent Murray argued that",
+o:["Women should be granted the vote in every state","Gaps between male and female achievement stemmed from unequal education rather than innate capacity","Women's proper role was confined to household management","Coeducation would undermine republican virtue"],a:1,
+e:"Murray's case was about intellectual capacity and access to schooling, not suffrage. It sits alongside Benjamin Rush's arguments for educating women as mothers of future citizens."},
+{q:"Most state constitutions written between 1776 and 1780 shared which feature?",
+o:["Powerful governors with broad veto authority","Strong legislatures, weak executives, and written bills of rights","Lifetime judicial appointments made by the governor","Property requirements abolished for voting and officeholding alike"],a:1,
+e:"Colonial experience with royal governors made executive power suspect. Massachusetts in 1780 was the partial exception, giving its governor a veto — and it was drafted by a convention and ratified by voters, a procedural model the federal convention later borrowed."},
+{q:"The founding of Richard Allen's Bethel church in Philadelphia and Prince Hall's African Masonic Lodge in Boston both illustrate",
+o:["Federal support for free Black institutions","Free Black Americans building independent institutions in response to exclusion from white ones","The success of gradual emancipation in the Deep South","State-funded education for formerly enslaved people"],a:1,
+e:"Allen and others walked out of St. George's Methodist church over segregated seating; Bethel followed in 1794, and the African Methodist Episcopal denomination formed in 1816. Institution-building was the practical form Black claims to revolutionary equality took."},
+{q:"For most Native nations, the most immediate consequence of the Revolution was",
+o:["Formal recognition of their sovereignty in the Treaty of Paris","The transfer of vast territory to the United States without their participation or consent","A guarantee of permanent hunting rights east of the Mississippi","Their admission as voting members of the Confederation Congress"],a:1,
+e:"Britain ceded land to the Mississippi in 1783 without consulting the nations who lived there. The Iroquois Confederacy had already fractured over the war, and Sullivan's 1779 campaign destroyed dozens of Haudenosaunee towns."},
+{q:"Several states abolished primogeniture and entail after independence. These reforms",
+o:["Redistributed all large estates to landless farmers","Removed legal restrictions that had kept large estates intact across generations","Prohibited the sale of western land to speculators","Ended property qualifications for voting"],a:1,
+e:"A modest but real change: estates could now be divided among heirs rather than passing whole to the eldest son. Jefferson championed it in Virginia as an attack on aristocratic landholding, though its practical effect was limited."},
+{q:"The French Declaration of the Rights of Man and of the Citizen (1789) reflects American influence most directly through",
+o:["Lafayette's drafting work, developed in consultation with Jefferson in Paris","A formal treaty requiring France to adopt American principles","Its verbatim adoption of the US Bill of Rights","Washington's diplomatic mission to the National Assembly"],a:0,
+e:"Lafayette had served in the Continental Army and worked on drafts with Jefferson, then US minister to France. Note the chronology: the French document precedes the US Bill of Rights by two years."},
+{q:"The Haitian Revolution, begun in 1791, affected the United States most significantly by",
+o:["Prompting immediate US recognition of Haitian independence","Alarming southern planters and contributing to France's decision to sell Louisiana","Ending the internal slave trade within the United States","Persuading Congress to abolish slavery in the Southwest Territory"],a:1,
+e:"French losses in Saint-Domingue made Napoleon's American empire untenable, which fed the 1803 sale. The United States withheld diplomatic recognition of Haiti until 1862."}]},
+
+{n:"The Articles of Confederation",d:"Topic 3.7 · structure, land policy, diplomacy, crisis",
+Q:[
+{s:"Articles of Confederation, Article II, drafted 1777",t:"Each state retains its sovereignty, freedom, and independence, and every power, jurisdiction, and right, which is not by this Confederation expressly delegated to the United States, in Congress assembled.",
+q:"This article most directly reflects",
+o:["A commitment to a strong central government","A league of largely sovereign states with a deliberately weak center","The supremacy of federal law over state law","A plan to abolish state governments over time"],a:1,
+e:"The Articles created what the document itself calls a firm league of friendship. The word 'expressly' is the key: it narrowed national authority far more tightly than the later Tenth Amendment, which omits it."},
+{q:"Final ratification of the Articles was delayed until 1781 primarily because",
+o:["Maryland refused to ratify until states with western land claims ceded them to Congress","Georgia demanded a guarantee protecting the slave trade","New York insisted on proportional representation","Congress could not agree on a national capital"],a:0,
+e:"Maryland, with no western claims of its own, held out until Virginia agreed to cede. That cession created the national domain the land ordinances later organized."},
+{q:"Under the Articles, amending the document required",
+o:["A two-thirds vote of Congress","Approval by nine of the thirteen states","The unanimous consent of all thirteen states","A national referendum"],a:2,
+e:"Unanimity for amendment, nine of thirteen for major legislation such as declaring war or coining money. The unanimity rule is why reform attempts failed and why Philadelphia ultimately bypassed the process entirely."},
+{q:"To raise revenue, the Confederation Congress could only",
+o:["Levy a direct tax on property","Request requisitions from the states, which frequently went unpaid","Impose tariffs on imported goods","Compel state courts to collect federal excises"],a:1,
+e:"States paid a fraction of what was asked. Efforts to add a 5 percent national impost failed in 1781 and 1783 — blocked by Rhode Island and then New York, since amendment required every state."},
+{q:"The Land Ordinance of 1785 provided that",
+o:["Western land would be surveyed into townships of 36 sections, with one reserved to support public schools","All western land would be given free to veterans of the Continental Army","Land could be purchased only by residents of the state claiming it","Territories would be governed permanently from Philadelphia"],a:0,
+e:"The rectangular survey grid it created still shapes the layout of the Midwest. Minimum purchase sizes and prices favored speculators over small farmers."},
+{q:"Under the Northwest Ordinance of 1787, a territory could apply for statehood once it had",
+o:["Thirty thousand residents of any status","Sixty thousand free inhabitants","A functioning state militia of one thousand men","Ratified the Articles of Confederation"],a:1,
+e:"Three stages: a congressionally appointed governor and judges, then an elected assembly at 5,000 free adult males, then statehood at 60,000 free inhabitants. The ordinance also guaranteed trial by jury and religious freedom and promised good faith toward Native nations, a promise routinely broken."},
+{q:"Which grievance persisted after the Treaty of Paris of 1783?",
+o:["Britain kept military posts in the Northwest, citing American failure to honor debt and Loyalist provisions","France demanded the return of Louisiana","Spain occupied Georgia","Britain refused to recognize American independence"],a:0,
+e:"The treaty's obligations ran both ways, and states blocked British creditors and Loyalist property claims. The posts remained until Jay's Treaty in 1794."},
+{q:"Spain's decision to close the lower Mississippi to American shipping in 1784 mattered because",
+o:["It cut off the export route for western farmers, and the proposed Jay–Gardoqui Treaty inflamed sectional anger by conceding it","It ended all US trade with the Caribbean","It violated the Northwest Ordinance","It triggered an immediate declaration of war"],a:0,
+e:"John Jay was willing to trade Mississippi navigation for commercial access to Spanish ports. Southern and western delegates were furious, the treaty was never ratified, and the episode exposed how sectional divisions paralyzed the Confederation."},
+{q:"The Annapolis Convention of 1786",
+o:["Drafted the Constitution","Drew delegates from only five states and issued a call for a broader convention in Philadelphia","Settled the dispute over western land cessions","Ratified the Treaty of Paris"],a:1,
+e:"Called to address interstate commercial conflicts, it was too thinly attended to accomplish anything — so Hamilton and Madison used it to summon the May 1787 meeting."},
+{q:"During the Newburgh conspiracy of 1783, army officers",
+o:["Demanded the appointment of a king","Threatened action against Congress over unpaid wages and pensions until Washington personally intervened","Refused to disband until Britain evacuated New York","Petitioned for land grants in the Northwest Territory"],a:1,
+e:"Washington's appearance before the officers, including the moment he reached for his spectacles, defused it. The episode is cited both as an early demonstration of civilian control of the military and as evidence of how little Congress could deliver."}]},
+
+{n:"The convention and ratification",d:"Topic 3.8 · plans, compromises, Federalists and Anti-Federalists",
+Q:[
+{q:"The Virginia Plan proposed",
+o:["A unicameral legislature with one vote per state","A bicameral legislature with representation in both houses based on population","An executive council of three members chosen by the states","Retaining the Articles with added commercial powers"],a:1,
+e:"Drafted largely by Madison and introduced by Randolph, it set the convention's agenda from the first week. Proportional representation in both houses favored the populous states."},
+{q:"William Paterson's New Jersey Plan responded by proposing",
+o:["Equal representation for each state, as under the Articles","Abolition of the states as political units","Direct election of senators","A property requirement for federal officeholding"],a:0,
+e:"Small states feared being swallowed by Virginia, Pennsylvania and Massachusetts. The plan kept a unicameral congress with equal state votes while adding taxing and commercial powers."},
+{q:"The Great Compromise resolved this conflict by",
+o:["Giving each state two votes in the House and one in the Senate","Creating a House apportioned by population and a Senate with equal state representation","Alternating representation schemes every ten years","Leaving apportionment to the president"],a:1,
+e:"Associated with Roger Sherman and the Connecticut delegation. It also specified that revenue bills originate in the House, a concession to the large states."},
+{q:"The Three-Fifths Compromise applied to",
+o:["Representation in the House and the apportionment of direct taxes","Representation in the Senate only","Eligibility for the presidency","The distribution of western land"],a:0,
+e:"Counting three-fifths of the enslaved population inflated southern representation in the House and the Electoral College for decades. The formula came from a failed 1783 amendment to the Articles."},
+{q:"On the international slave trade, the convention agreed that",
+o:["It would be abolished immediately upon ratification","Congress could not prohibit it before 1808","Each state could set its own policy permanently","It would continue under federal license indefinitely"],a:1,
+e:"A twenty-year shield, paired with a ban on export taxes, secured Deep South support. Congress acted at the first legal opportunity and the ban took effect January 1, 1808."},
+{q:"Delegates conducted the convention's proceedings in secret, which means that",
+o:["No record of the debates survives","Madison's detailed notes are the principal record historians rely on","The debates were published daily in Philadelphia newspapers","Only Washington was permitted to take notes"],a:1,
+e:"Windows were shuttered and delegates sworn to silence so positions could shift without public commitment. Madison's notes were published only after his death in 1836."},
+{q:"Which statement about attendance at the convention is accurate?",
+o:["Jefferson and Adams were both abroad, and Patrick Henry refused to attend","All thirteen states sent delegations","Jefferson presided over the debates","Rhode Island sent the largest delegation"],a:0,
+e:"Jefferson was minister to France and Adams to Britain. Henry declined, reportedly saying he smelt a rat, and Rhode Island refused to send anyone at all."},
+{q:"The Federalist essays were written primarily to",
+o:["Persuade voters and convention delegates in New York to ratify","Serve as the convention's official minutes","Outline Washington's plans for his first administration","Respond to British criticism of the new government"],a:0,
+e:"Hamilton, Madison and Jay wrote 85 essays as Publius for New York newspapers, where ratification was seriously in doubt. Their standing as authoritative constitutional interpretation came later."},
+{q:"Anti-Federalist opposition drew its greatest strength from",
+o:["Coastal merchants and large creditors","Backcountry and small farmers wary of distant government and heavy taxation","Continental Army officers","Urban artisans in port cities"],a:1,
+e:"The geography is fairly consistent: support for ratification clustered along the coast and in commercial centers, opposition inland. Artisans and merchants generally favored a government able to regulate trade."},
+{q:"The Constitution took effect when",
+o:["All thirteen states had ratified","New Hampshire became the ninth state to ratify, in June 1788","Congress declared it operative by a two-thirds vote","Washington was inaugurated"],a:1,
+e:"Nine of thirteen was the threshold, and ratification ran through special conventions rather than legislatures. Virginia and New York followed narrowly; Rhode Island held out until 1790, after the government was already running."}]},
+
+{n:"The Constitution",d:"Topic 3.9 · structure, powers, checks, the Bill of Rights",
+Q:[
+{q:"The supremacy clause of Article VI provides that",
+o:["The president may override any state law","Federal law and treaties take precedence over conflicting state law","The Supreme Court may amend the Constitution","States must obtain congressional approval for their constitutions"],a:1,
+e:"It is the hinge of federalism, resolving conflicts between two levels of government that each act directly on citizens. It does not give federal authority over subjects the Constitution leaves to the states."},
+{q:"The necessary and proper clause is significant because it",
+o:["Limits Congress strictly to its enumerated powers","Provides the basis for implied powers, and became the core of the debate over the national bank","Grants the president emergency authority","Requires that all laws be approved by the states"],a:1,
+e:"Hamilton read it broadly to justify the Bank of the United States in 1791; Jefferson and Madison read it narrowly, arguing necessary meant indispensable. The dispute defined the first party system and was settled in Hamilton's favor in McCulloch v. Maryland, 1819."},
+{q:"An amendment proposed by a two-thirds vote of both houses takes effect when ratified by",
+o:["A simple majority of the states","Two-thirds of the states","Three-fourths of the states","All of the states"],a:2,
+e:"Three-fourths, by state legislatures or conventions. Deliberately hard, but far easier than the unanimity the Articles required — one of the clearest fixes the Constitution made."},
+{q:"The Tenth Amendment provides that",
+o:["Powers not delegated to the United States are reserved to the states or the people","Congress may not establish a religion","Trials must be by jury","The enumeration of rights does not deny others retained by the people"],a:0,
+e:"Note the difference from Article II of the Articles: the Tenth Amendment drops the word 'expressly,' leaving room for implied powers. The last option describes the Ninth Amendment."},
+{q:"Which power belongs to the Senate alone?",
+o:["Originating revenue bills","Confirming appointments and ratifying treaties by a two-thirds vote","Impeaching federal officials","Declaring war"],a:1,
+e:"The House originates revenue bills and votes impeachment; the Senate then tries impeachments and holds the advice-and-consent power. Declaring war takes both chambers."},
+{q:"The Constitution's treatment of slavery is notable in that",
+o:["It bans the word slavery from state constitutions","It never uses the words slave or slavery, relying on phrases like other Persons","It sets a national emancipation date of 1808","It grants Congress explicit power to abolish slavery in the states"],a:1,
+e:"The circumlocutions were deliberate. Three clauses nonetheless protected the institution: three-fifths representation, the twenty-year slave-trade shield, and the fugitive slave clause."},
+{q:"The Electoral College was adopted largely because delegates",
+o:["Wanted the states to have no role in presidential selection","Distrusted both direct popular election and selection by Congress, and sought a compromise between them","Intended to guarantee a two-party system","Were required to follow the Virginia Plan on this point"],a:1,
+e:"Congressional selection risked making the executive dependent on the legislature; direct election troubled delegates who doubted a national electorate could judge candidates. The three-fifths clause also gave slaveholding states added weight in the resulting formula."},
+{q:"The Bill of Rights was ratified in",
+o:["1787","1789","1791","1795"],a:2,
+e:"Madison drafted the amendments in the First Congress in 1789; ten were ratified by the states in 1791. Two of the original twelve proposals failed, one of which was finally ratified in 1992 as the Twenty-Seventh Amendment."},
+{q:"The Judiciary Act of 1789 was necessary because the Constitution",
+o:["Explicitly created only the Supreme Court, leaving lower federal courts to Congress","Prohibited any federal courts below the state level","Gave the president authority to design the court system","Assigned judicial power entirely to state courts"],a:0,
+e:"Article III creates one Supreme Court and authorizes such inferior courts as Congress may establish. The 1789 act built the district and circuit courts and created the attorney general's office."},
+{q:"Which pair correctly matches a constitutional principle with an example?",
+o:["Federalism — the president's power to veto legislation","Checks and balances — the division of powers between national and state governments","Popular sovereignty — the House of Representatives elected directly by voters","Separation of powers — the requirement that three-fourths of states ratify amendments"],a:2,
+e:"Direct election of the House was the one federal office chosen by voters in 1789. The other options swap their principles: the veto is a check, the national and state division is federalism, and amendment ratification reflects federalism rather than separation of powers."}]},
+
+{n:"Cumulative review",d:"Topics 3.6 to 3.9 mixed · causation, comparison, chronology",
+Q:[
+{s:"James Madison, Federalist No. 10, 1787",t:"The latent causes of faction are thus sown in the nature of man… But the most common and durable source of factions has been the various and unequal distribution of property. Those who hold and those who are without property have ever formed distinct interests in society.",
+q:"Madison's proposed remedy for the danger he describes was to",
+o:["Eliminate the causes of faction by equalizing property","Extend the republic over a large territory so no single faction could form a majority","Restrict voting to property holders in every state","Give the executive power to dissolve political societies"],a:1,
+e:"Madison held that destroying the causes of faction would require destroying liberty itself, so the answer is to control its effects. Extending the sphere multiplies competing interests."},
+{q:"Which sequence is correctly ordered?",
+o:["Articles ratified, Land Ordinance, Northwest Ordinance, Constitution ratified, Bill of Rights ratified","Land Ordinance, Articles ratified, Constitution ratified, Northwest Ordinance, Bill of Rights ratified","Articles ratified, Northwest Ordinance, Land Ordinance, Bill of Rights ratified, Constitution ratified","Northwest Ordinance, Articles ratified, Land Ordinance, Constitution ratified, Bill of Rights ratified"],a:0,
+e:"1781, 1785, 1787, 1788, 1791. Worth noting that the Northwest Ordinance and the Constitutional Convention ran concurrently in the summer of 1787 — the Confederation Congress in New York, the convention in Philadelphia."},
+{q:"Which best explains why the Confederation government could organize an enormous western domain yet not pay its own soldiers?",
+o:["Congress controlled the national land domain but had no independent power of taxation","The states refused to recognize the Northwest Territory","The Treaty of Paris barred federal spending on the military","Land sales were prohibited until after 1790"],a:0,
+e:"This contrast is the standard framing for the Articles: real achievement in land policy, structural failure in finance. Land sales were themselves an attempt to raise revenue without taxes."},
+{q:"A historian arguing that the Revolution's egalitarian promise was sharply limited would most likely cite",
+o:["The Virginia Statute for Religious Freedom","Constitutional protections for slavery and the survival of coverture","The Northwest Ordinance's slavery ban","Gradual emancipation laws in the northern states"],a:1,
+e:"The three-fifths, fugitive slave and slave-trade clauses wrote protection for slavery into the national framework, while married women's legal subordination continued. The other three options support the opposite argument, which is what makes them useful counterevidence in an essay."},
+{q:"Shays's Rebellion is most often used as evidence for which causal claim?",
+o:["Popular unrest strengthened support for a stronger national government","Backcountry farmers dominated the Constitutional Convention","The Articles gave Congress excessive military power","State governments were unwilling to collect taxes"],a:0,
+e:"Massachusetts was collecting taxes aggressively — that was the grievance. The lesson elites drew was that no national force existed to answer domestic insurrection, and that argument carried into Philadelphia."},
+{q:"Republican motherhood is best understood as",
+o:["A movement for women's suffrage in the 1790s","An ideology assigning women civic significance through the raising of virtuous citizens, expanding education without granting political rights","A legal doctrine giving mothers custody rights after divorce","A campaign to admit women to the Continental Army"],a:1,
+e:"A useful example of change and continuity inside a single development: real gains in female literacy and schooling, alongside continued exclusion from formal politics."},
+{q:"The Northwest Ordinance's slavery provision is historically significant because it",
+o:["Freed all enslaved people living in the territory in 1787","Set a precedent for excluding slavery from federal territory and helped make the Ohio River a sectional boundary","Applied to all land west of the Appalachians","Was repealed by the Constitution in 1789"],a:1,
+e:"The ban applied prospectively and was unevenly enforced, with some enslaved people held in the territory for years afterward. Its precedent shaped every later territorial fight, from the Missouri Compromise to the Wilmot Proviso."},
+{q:"The most enduring legacy of the Anti-Federalists was",
+o:["The addition of the Bill of Rights","The retention of the Articles of Confederation","The creation of the Electoral College","The three-fifths clause"],a:0,
+e:"They lost the ratification fight but forced the concession that produced the first ten amendments. Their warnings about consolidated national power also supplied lasting language for states'-rights arguments."},
+{q:"Which comparison between the Articles and the Constitution is accurate?",
+o:["Both required unanimous consent to amend","The Articles created a national judiciary; the Constitution did not","The Articles gave Congress no power over interstate commerce; the Constitution granted it explicitly","Both provided for a single national executive"],a:2,
+e:"The commerce clause addressed one of the sharpest failures of the 1780s, when states levied duties on one another's goods. The Articles had neither an executive nor a judiciary."},
+{q:"Which piece of evidence best supports the claim that the American Revolution had global consequences?",
+o:["The Whiskey Rebellion of 1794","Latin American independence movements of the 1810s and 1820s invoking natural-rights arguments","The Louisiana Purchase of 1803","The founding of the African Methodist Episcopal Church"],a:1,
+e:"Bolívar and others drew on the same natural-rights vocabulary, and the Haitian Revolution is an even more direct case. The Whiskey Rebellion and the AME church are domestic developments."}]}];
+
+const $=id=>document.getElementById(id);
+const L="ABCD";
+let sx=-1,i=0,si=0,res=[],locked=false,phase="menu";
+const best=SETS.map(()=>null);
+
+function clear(){["rail","meta","doc","ask","opts","fb","acts","tip"].forEach(k=>{$(k).innerHTML="";});}
+function head(t,l,e){$("title").textContent=t;$("lede").textContent=l;$("eyebrow").textContent=e;}
+
+function menu(){
+  phase="menu";sx=-1;clear();
+  head("Period Three","Topics 3.6 to 3.9 — revolutionary ideals, the Articles of Confederation, the convention and ratification, and the Constitution.","United States history · advanced placement");
+  const wrap=document.createElement("div");wrap.className="list";
+  SETS.forEach((s,k)=>{
+    const b=document.createElement("button");
+    b.className="entry";
+    const cnt=s.Q.length+" questions"+(s.SAQ?" · "+s.SAQ.length+" short answer":"");
+    b.innerHTML='<span class="num">'+(k+1)+'</span><span><span class="t">'+s.n+'</span><span class="d">'+s.d+'</span><span class="d" style="margin-top:6px">'+cnt+'</span>'+(best[k]!==null?'<span class="s">Best score '+best[k]+' of '+s.Q.length+'</span>':'')+'</span>';
+    b.onclick=()=>{sx=k;i=0;si=0;res=[];ask();};
+    wrap.appendChild(b);
+  });
+  $("opts").className="";$("opts").appendChild(wrap);
+  $("tip").textContent="Every excerpt is a public-domain primary source. Answer with the keys A to D or 1 to 4 if you prefer the keyboard.";
+  scroll();
+}
+
+function rail(){
+  const n=SETS[sx].Q.length;let h='<div class="rail">';
+  for(let k=0;k<n;k++){
+    let c="seg";
+    if(res[k]===true)c+=" hit";else if(res[k]===false)c+=" miss";else if(phase==="mc"&&k===i)c+=" now";
+    h+='<div class="'+c+'"></div>';
+  }
+  $("rail").innerHTML=h+'</div>';
+}
+function src(k){let j=k;while(j>0&&!SETS[sx].Q[j].s)j--;return SETS[sx].Q[j].s?SETS[sx].Q[j]:null;}
+function scroll(){window.scrollTo({top:0,behavior:"instant"});}
+function act(label,style,fn){const b=document.createElement("button");b.className="btn "+style;b.textContent=label;b.onclick=fn;$("acts").appendChild(b);}
+
+function ask(){
+  phase="mc";clear();
+  const S=SETS[sx],d=S.Q[i],st=src(i);
+  head(S.n,S.d,"Period three");
+  rail();
+  $("meta").textContent="Question "+(i+1)+" of "+S.Q.length;
+  if(st)$("doc").innerHTML='<div class="doc"><p class="src">'+st.s+'</p><p class="qt">'+st.t+'</p></div>';
+  $("ask").innerHTML='<div class="ask"><span class="num">'+(i+1)+'</span><p></p></div>';
+  $("ask").querySelector("p").textContent=d.q;
+  $("opts").className="opts";
+  d.o.forEach((txt,k)=>{
+    const b=document.createElement("button");
+    b.className="opt";
+    b.innerHTML='<span class="badge">'+L[k]+'</span><span></span>';
+    b.querySelector("span:last-child").textContent=txt;
+    b.onclick=()=>pick(k);
+    $("opts").appendChild(b);
+  });
+  locked=false;
+  act("Leave this set","hollow",menu);
+  $("tip").textContent="Press A to D or 1 to 4 to answer.";
+  scroll();
+}
+
+function pick(k){
+  if(locked)return;locked=true;
+  const d=SETS[sx].Q[i];res[i]=(k===d.a);
+  rail();
+  [...$("opts").children].forEach((b,n)=>{b.disabled=true;if(n===d.a)b.classList.add("right");else if(n===k)b.classList.add("wrong");});
+  const box=document.createElement("div");
+  box.className="said "+(res[i]?"y":"n");
+  box.innerHTML='<b>'+(res[i]?"Correct":"Correct answer: "+L[d.a])+'</b><span></span>';
+  box.querySelector("span").textContent=d.e;
+  $("fb").appendChild(box);
+  $("acts").innerHTML="";
+  const last=i===SETS[sx].Q.length-1;
+  act(last?(SETS[sx].SAQ?"Continue to short answer":"See results"):"Next question","solid",()=>{
+    if(!last){i++;ask();}else if(SETS[sx].SAQ){si=0;saq();}else results();
+  });
+  act("Leave this set","hollow",menu);
+  $("tip").textContent="Press Enter to continue.";
+}
+
+function saq(){
+  phase="saq";clear();
+  const S=SETS[sx],s=S.SAQ[si];
+  head(S.n,"Short answer "+(si+1)+" of "+S.SAQ.length,"Period three");
+  $("meta").textContent="Answer all three parts. Two to three sentences each.";
+  $("doc").innerHTML='<div class="doc"><p class="src">Short answer question '+(si+1)+'</p><p class="qt">'+s.h+'</p></div>';
+  $("opts").className="";
+  $("opts").innerHTML=s.q.map((t,k)=>'<div class="saqbox"><label class="part" for="t'+k+'">'+t+'</label><textarea id="t'+k+'" rows="3"></textarea></div>').join("");
+  act("Compare with model answer","solid",()=>{
+    if(s.q.some((_,k)=>!$("t"+k).value.trim())){
+      $("fb").innerHTML='<p class="err">Write something for every part first.</p>';return;
+    }
+    $("fb").innerHTML='<div class="model"></div>';
+    $("fb").querySelector(".model").textContent=s.m;
+    $("acts").innerHTML="";
+    act(si<S.SAQ.length-1?"Next question":"See results","solid",()=>{if(si<S.SAQ.length-1){si++;saq();}else results();});
+    act("Leave this set","hollow",menu);
+  });
+  act("Leave this set","hollow",menu);
+  s.q.forEach((_,k)=>$("t"+k).addEventListener("input",()=>{$("fb").innerHTML="";}));
+  scroll();
+}
+
+function results(){
+  phase="res";clear();
+  const S=SETS[sx],right=res.filter(Boolean).length,n=S.Q.length;
+  if(best[sx]===null||right>best[sx])best[sx]=right;
+  head(S.n,"","Results");
+  $("lede").textContent="";
+  rail();
+  $("meta").textContent="Multiple-choice score";
+  $("doc").innerHTML='<p class="big">'+right+' <span class="of">of '+n+'</span></p>';
+  const pct=right/n;
+  const line=pct===1?"Clean sweep. Move on to the next set.":pct>=.8?"Solid. Read the explanations for the few you missed and move on.":pct>=.6?"Reasonable footing, but the misses below are worth a second pass through the chapter.":"Worth rereading the relevant AMSCO sections before retaking this one.";
+  const v=document.createElement("p");v.className="verdict";v.textContent=line;$("ask").appendChild(v);
+  const missed=S.Q.map((d,k)=>res[k]?null:{n:k+1,q:d.q}).filter(Boolean);
+  $("opts").className="";
+  $("opts").innerHTML=missed.length?missed.map(m=>'<div class="miss"><span class="mn">'+m.n+'</span><span>'+m.q+'</span></div>').join(""):"";
+  act("Retake this set","hollow",()=>{i=0;si=0;res=[];ask();});
+  act("Full answer key","solid",key);
+  act("All sets","hollow",menu);
+  scroll();
+}
+
+function key(){
+  phase="key";clear();
+  const S=SETS[sx];
+  head(S.n,"","Answer key");
+  $("lede").textContent="";
+  $("meta").textContent="Every question, with the reasoning";
+  $("opts").className="";
+  $("opts").innerHTML=S.Q.map((d,k)=>'<div class="keyq"><p class="kq"><span class="mn">'+(k+1)+'</span><span>'+d.q+'</span></p><p class="ka">'+L[d.a]+' — '+d.o[d.a]+'</p><p class="ke">'+d.e+'</p></div>').join("");
+  act("Retake this set","hollow",()=>{i=0;si=0;res=[];ask();});
+  act("All sets","solid",menu);
+  scroll();
+}
+
+document.addEventListener("keydown",ev=>{
+  if(phase==="mc"&&!locked){
+    const u=ev.key.toUpperCase();
+    let k=L.indexOf(u);
+    if(k<0&&"1234".includes(ev.key))k=+ev.key-1;
+    if(k>=0&&k<SETS[sx].Q[i].o.length){ev.preventDefault();pick(k);}
+  }else if(ev.key==="Enter"&&phase==="mc"&&locked){
+    const b=$("acts").querySelector(".solid");if(b){ev.preventDefault();b.click();}
+  }
+});
+menu();
+</script>
+</body>
+</html>
